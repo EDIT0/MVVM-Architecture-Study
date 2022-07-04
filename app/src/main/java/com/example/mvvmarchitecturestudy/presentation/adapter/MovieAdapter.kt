@@ -38,15 +38,15 @@ class MovieAdapter : ListAdapter<MovieModelResult, MovieAdapter.ViewHolder>(diff
 
             binding.root.setOnClickListener {
                 onItemClickListener?.let {
-                    it(popularMovieModelResult)
+                    it(adapterPosition, popularMovieModelResult)
                 }
             }
         }
     }
 
-    private var onItemClickListener : ((MovieModelResult) -> Unit) ?= null
+    private var onItemClickListener : ((Int, MovieModelResult) -> String) ?= null
 
-    fun setOnItemClickListener(listener : (MovieModelResult) -> Unit) {
+    fun setOnItemClickListener(listener : (Int, MovieModelResult) -> String) {
         onItemClickListener = listener
     }
 

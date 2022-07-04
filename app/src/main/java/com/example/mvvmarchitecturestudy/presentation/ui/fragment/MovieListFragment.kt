@@ -76,14 +76,17 @@ class MovieListFragment : Fragment() {
             addOnScrollListener(this@MovieListFragment.onScrollListener)
         }
 
-        movieAdapter.setOnItemClickListener {
+        movieAdapter.setOnItemClickListener { adapterPosition, it ->
             val intent = Intent(requireActivity(), MovieInfoActivity::class.java)
 //            val bundle = Bundle().apply {
 //                putSerializable("MovieInfo", it)
 //            }
+            Log.i(MainActivity.TAG + CLASS_NAME, "${adapterPosition} ${it}")
             intent.putExtra("MovieInfo", it)
 //            resultLauncher?.launch(intent)
             requireActivity().startActivity(intent)
+
+            ""
         }
     }
 
